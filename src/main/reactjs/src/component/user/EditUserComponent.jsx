@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import ApiService from "../../ApiService";
+
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 class EditUserComponent extends Component{
 
@@ -7,6 +12,7 @@ class EditUserComponent extends Component{
 
     this.state = {
       id: '',
+      username: '',
       firstName: '',
       lastName: '',
       age: '',
@@ -70,43 +76,34 @@ class EditUserComponent extends Component{
   render(){
     return(
       <div>
-        <h2>Edit User</h2>
+        <Typography variant="h4" style={style}>Edit User</Typography>
         <form>
-          <div>
-            <label>User Name:</label>
-            <input type="text" name="username" readOnly="true" defaultValue={this.state.username} />
-          </div>
+            <TextField type="text" name="username" readOnly={true} 
+fullWidth margin="normal" value={this.state.username} />
 
-          <div>
-            <label>First Name:</label>
-            <input placeholder="Edit your first name" name="firstName" value={this.state.firstName}
-onChange={this.onChange} />
-          </div>
+            <TextField placeholder="Edit your first name" name="firstName" 
+fullWidth margin="normal" value={this.state.firstName} onChange={this.onChange} />
 
-          <div>
-            <label>Last Name:</label>
-            <input placeholder="Edit your last name" name="lastName" value={this.state.lastName}
-onChange={this.onChange} />
-          </div>
+            <TextField placeholder="Edit your last name" name="lastName" 
+fullWidth margin="normal" value={this.state.lastName} onChange={this.onChange} />
 
-          <div>
-            <label>Age:</label>
-            <input type="number" placeholder="Edit your age" name="age" value={this.state.age}
-onChange={this.onChange} />
-          </div>
+            <TextField type="number" placeholder="Edit your age" name="age" 
+fullWidth margin="normal" value={this.state.age} onChange={this.onChange} />
 
-          <div>
-            <label>Salary:</label>
-            <input type="number" placeholder="Edit your salary" name="salary" value={this.state.salary}
-onChange={this.onChange} />
-          </div>
+            <TextField type="number" placeholder="Edit your salary" name="salary" 
+fullWidth margin="normal" value={this.state.salary} onChange={this.onChange} />
 
-          <button onClick={this.saveUser}>Save</button>
+          <Button variant="contained" color="primary" onClick={this.saveUser}>Save</Button>
 
         </form>
       </div>
     );
   }
+}
+
+const style = {
+  display: 'flex',
+  justifyContent: 'center'
 }
 
 export default EditUserComponent;
